@@ -113,4 +113,7 @@ https://swift.org/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-05-09
 // Open Xcode, Preferences, Components, Toolchains, Select installed toolchain and restart
 
 // From terminal add swift path:
+touch ~/.bash_profile; open ~/.bash_profile
 export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
+[SAVE_FILE]
+source ~/.bash_profile
