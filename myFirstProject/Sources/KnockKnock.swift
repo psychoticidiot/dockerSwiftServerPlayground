@@ -37,6 +37,7 @@ public struct KnockKnockRoute: SwiftServerRoute
     public let path = "/joke"
     public var handler: RouterHandler?
     private var currentState: KnockKnockState = .KnockKnock
+    private var answer = ""
     
     private init()
     {
@@ -52,10 +53,25 @@ public struct KnockKnockRoute: SwiftServerRoute
             
             do
             {
-                let answer = self.currentState.rawValue ?? "Hmmm"
-                let result = response.status(.OK).send(answer)
+                let message = request.queryParams["message"]?.stringByRemovingPercentEncoding ?? ""
+                
+                if message.lowercased() == "knock knock"
+                {
+                    self.currentState = .KnockKnock
+                }
+                
+                switch(self.currentState)
+                {
+                    case .KnockKnock:
+                        self.answer = message + "\nWho's There?\n"
+                    case .WhosThere:
+                        self.answer += message + "\n" + message + " who?\n"
+                    case .Laugh:
+                        self.answer += message + "\nHaHa! That was a good one!"
+                }
                 self.currentState = self.currentState.next()
-                try result.end()
+                
+                try response.status(.OK).send(self.answer).end()
             }
             catch
             {

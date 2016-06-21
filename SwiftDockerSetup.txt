@@ -83,25 +83,6 @@ docker stop <NAME_FROM_DOCKER_PS>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // macOS INSTALL
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew install curl
@@ -117,3 +98,26 @@ touch ~/.bash_profile; open ~/.bash_profile
 export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
 [SAVE_FILE]
 source ~/.bash_profile
+
+
+
+
+
+// RESOURCES
+https://github.com/showcases/programming-languages
+http://perfect.org/
+https://github.com/IBM-Swift/Kitura
+http://www.zewo.io/
+https://github.com/qutheory/vapor
+http://swiftexpress.io/
+
+
+
+
+
+// Joke Sample
+http://localhost:8095/joke?message=Knock%20Knock
+http://localhost:8095/joke?message=Boo!
+http://localhost:8095/joke?message=Are%20you%20crying?
+
+
