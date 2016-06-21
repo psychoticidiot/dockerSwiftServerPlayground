@@ -42,7 +42,7 @@ main.swift (create file from mac in `~/Desktop/swiftserver/myFirstProject/Source
 
 	let router = Router()
 
-	router.get("/hello") {
+	router.get("/") {
 	request, response, next in
 
 		response.headers["Content-Type"] = "text/plain; charset=utf-8"

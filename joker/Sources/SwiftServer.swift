@@ -1,11 +1,3 @@
-//
-//  SwiftServer.swift
-//  
-//
-//  Created by Brian Mullen on 6/20/16.
-//
-//
-
 import Foundation
 import Kitura
 import KituraSys

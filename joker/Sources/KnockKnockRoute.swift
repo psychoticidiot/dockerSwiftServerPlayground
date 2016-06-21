@@ -1,40 +1,13 @@
-//
-//  KnockKnock.swift
-//  
-//
-//  Created by Brian Mullen on 6/20/16.
-//
-//
-
 import Foundation
 import Kitura
 import KituraSys
 import KituraNet
 
-enum KnockKnockState: String
-{
-    case KnockKnock = "Knock, Knock",
-         WhosThere = "Who's There?",
-         Laugh = "HaHa"
-    
-    func next() -> KnockKnockState
-    {
-        switch(self)
-        {
-            case .KnockKnock:
-                return .WhosThere
-            case .WhosThere:
-                return .Laugh
-            case .Laugh:
-                return .KnockKnock
-        }
-    }
-}
 
 public struct KnockKnockRoute: SwiftServerRoute
 {
     public static var sharedInstance = KnockKnockRoute()
-    public let path = "/joke"
+    public let path = "/"
     public var handler: RouterHandler?
     private var currentState: KnockKnockState = .KnockKnock
     private var answer = ""
@@ -53,7 +26,7 @@ public struct KnockKnockRoute: SwiftServerRoute
             
             do
             {
-                let message = request.queryParams["message"]?.stringByRemovingPercentEncoding ?? ""
+                let message = request.queryParams["message"]?.stringByRemovingPercentEncoding ?? "Knock Knock"
                 
                 if message.lowercased() == "knock knock"
                 {
