@@ -26,19 +26,23 @@
 * Create Project Files
 
 `cd swiftserver`
+
 `mkdir myFirstProject`
+
 `cd myFirstProject`
+
 `swift build --init`
+
 
 * Create Package.swift (create file on mac in "~/Desktop/swiftserver/myFirstProject")
 ```swift
 import PackageDescription
 
 let package = Package(
-    name: "myFirstProject",
-    dependencies: [
-        .Package(url: "https://github.com/IBM-Swift/Kitura.git", majorVersion: 0, minor: 15)
-    ])
+name: "myFirstProject",
+dependencies: [
+.Package(url: "https://github.com/IBM-Swift/Kitura.git", majorVersion: 0, minor: 15)
+])
 ```
 
 * Create main.swift (create file on mac in `~/Desktop/swiftserver/myFirstProject/Sources`)
@@ -54,16 +58,16 @@ let router = Router()
 router.get("/") 
 { request, response, next in
 
-    response.headers["Content-Type"] = "text/plain; charset=utf-8"
+response.headers["Content-Type"] = "text/plain; charset=utf-8"
 
-    do
-    {
-        try response.status(.OK).send("Hello, World!").end()
-    }
-    catch
-    {
-        print("ERROR: Failed to send response to client: \(error)")
-    }
+do
+{
+try response.status(.OK).send("Hello, World!").end()
+}
+catch
+{
+print("ERROR: Failed to send response to client: \(error)")
+}
 }
 
 let port = 8095
@@ -75,6 +79,7 @@ Server.run()
 * Compile & Run App
 
 `swift build -Xcc -fblocks -Xlinker -rpath -Xlinker .build/debug`
+
 `.build/debug/myFirstProject`
 
 
@@ -82,25 +87,33 @@ Server.run()
 
 
 ### macOS INSTALL
-1) Install Curl
+* Install Curl
 
 `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+
 `brew install curl`
 
-2) Install Toolchains
+* Install Toolchains
 
-https://swift.org/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a-osx.pkg
-https://swift.org/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a-osx-symbols.pkg
+[DEVELOPMENT-SNAPSHOT-2016-05-09-a-osx](https://swift.org/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a-osx.pkg)
 
-3) Select toolchain in Xcode
+[DEVELOPMENT-SNAPSHOT-2016-05-09-a-osx-symbols](https://swift.org/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a-osx-symbols.pkg)
+
+
+
+* Select toolchain in Xcode
 
 Open Xcode, Preferences, Components, Toolchains, Select installed toolchain and restart
 
-4) Add swift path from terminal:
+* Add swift path from terminal:
 `touch ~/.bash_profile; open ~/.bash_profile`
+
 `export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"`
+
 `<SAVE_FILE>`
+
 `source ~/.bash_profile`
+
 
 
 
