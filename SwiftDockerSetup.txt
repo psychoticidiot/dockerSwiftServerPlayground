@@ -42,7 +42,7 @@ main.swift (create file from mac in `~/Desktop/swiftserver/myFirstProject/Source
 
 	let router = Router()
 
-	router.get("/") {
+	router.get("/hello") {
 	request, response, next in
 
 		response.headers["Content-Type"] = "text/plain; charset=utf-8"
@@ -116,8 +116,8 @@ http://swiftexpress.io/
 
 
 // Joke Sample
-http://localhost:8095/joke?message=Knock%20Knock
-http://localhost:8095/joke?message=Boo!
-http://localhost:8095/joke?message=Are%20you%20crying?
+http://localhost:8095/?message=Knock%20Knock
+http://localhost:8095/?message=Boo!
+http://localhost:8095/?message=Are%20you%20crying?
 
 
